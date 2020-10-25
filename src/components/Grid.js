@@ -20,7 +20,10 @@ const Grid = () => {
 
     return(
         <>  
-            <StartBtn />
+            <StartBtn 
+            setGrid={setGrid}
+            numRows={numRows}
+            numCols={numCols} />
             <div className='gridContainer'>
                 {grid.map((rows, i) => 
                     rows.map((col, j) => 
