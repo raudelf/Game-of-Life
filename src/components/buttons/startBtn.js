@@ -54,7 +54,7 @@ const StartBtn = (props) => {
                 }
             })
         })
-        setTimeout(handleRun, 1000);
+        setTimeout(handleRun, 100);
     }, []);
 
     return (
