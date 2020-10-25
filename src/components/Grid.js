@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import produce from 'immer';
 
+// Buttons
+import StartBtn from './buttons/startBtn.js';
+
 const numRows = 50;
 const numCols = 50;
 
 const Grid = () => {
-    const [run, setRun] = useState(false);
-
     const [grid, setGrid] = useState(() => {
         const rows = [];
 
@@ -17,16 +18,9 @@ const Grid = () => {
         return rows
     })
 
-    const handleStart = e => {
-        e.preventDefault();
-        setRun(!run)
-    }
-    
     return(
-        <>
-            <button 
-            className='btn startBtn'
-            onClick={handleStart}>{run ? 'Stop' : 'Start'}</button>
+        <>  
+            <StartBtn />
             <div className='gridContainer'>
                 {grid.map((rows, i) => 
                     rows.map((col, j) => 
