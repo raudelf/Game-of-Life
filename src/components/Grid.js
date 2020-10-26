@@ -31,6 +31,10 @@ const Grid = () => {
         }
     }
 
+    const sizeRef = useRef(gridSize)
+    sizeRef.current = gridSize
+    console.log(sizeRef, 'size')
+
     const runRef = useRef(run);
     runRef.current = run;
 
@@ -38,17 +42,17 @@ const Grid = () => {
         if (!runRef.current) {
             return;
         }
-        console.log(gridSize.numRows, 'NUMROWS')
+
         setGrid(grid => {
             return produce(grid, gridCopy => {
-                for (let i = 0; i < gridSize.numRows; i++) {
-                    for (let j = 0; j < gridSize.numCols; j++) {
+                for (let i = 0; i < sizeRef.current.numRows; i++) {
+                    for (let j = 0; j < sizeRef.current.numCols; j++) {
                         let neighbors = 0;
                         operations.forEach(([x, y]) => {
                             const newI = i + x;
                             const newJ = j + y;
 
-                            if (newI >= 0 && newI < gridSize.numRows && newJ >= 0 && newJ < gridSize.numCols) {
+                            if (newI >= 0 && newI < sizeRef.current.numRows && newJ >= 0 && newJ < sizeRef.current.numCols) {
                                 neighbors += grid[newI][newJ]
                             }
                         })
