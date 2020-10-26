@@ -1,6 +1,3 @@
-export const numCols = 50;
-export const numRows = 50;
-
 export const operations = [
     [0, 1],
     [0, -1],
@@ -12,7 +9,7 @@ export const operations = [
     [-1, 0]
 ]
 
-export const generateEmptyGrid = props => {
+export const generateEmptyGrid = (numRows, numCols) => {
     const rows = [];
 
         for (let i = 0; i < numRows; i++) {
