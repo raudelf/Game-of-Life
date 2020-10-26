@@ -13,6 +13,9 @@ const StartBtn = (props) => {
         }
     }
 
+    const sizeRef = useRef(props.gridSize)
+    sizeRef.current = props.gridSize
+
     const runRef = useRef(run);
     runRef.current = run;
 
@@ -20,18 +23,17 @@ const StartBtn = (props) => {
         if (!runRef.current) {
             return;
         }
-        let gridDim = props.gridSize
-        console.log(gridDim.numRows, 'NUMROWS')
+
         props.setGrid(grid => {
             return produce(grid, gridCopy => {
-                for (let i = 0; i < gridDim.numRows; i++) {
-                    for (let j = 0; j < gridDim.numCols; j++) {
+                for (let i = 0; i < sizeRef.current.numRows; i++) {
+                    for (let j = 0; j < sizeRef.current.numCols; j++) {
                         let neighbors = 0;
                         operations.forEach(([x, y]) => {
                             const newI = i + x;
                             const newJ = j + y;
 
-                            if (newI >= 0 && newI < gridDim.numRows && newJ >= 0 && newJ < gridDim.numCols) {
+                            if (newI >= 0 && newI < sizeRef.current.numRows && newJ >= 0 && newJ < sizeRef.current.numCols) {
                                 neighbors += grid[newI][newJ]
                             }
                         })
