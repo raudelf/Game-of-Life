@@ -1,16 +1,7 @@
 import React, {useState , useCallback, useRef} from 'react';
+import {operations, numRows, numCols} from './clearBtn.js';
 import produce from 'immer';
 
-const operations = [
-    [0, 1],
-    [0, -1],
-    [1, -1],
-    [-1, 1],
-    [1, 1],
-    [-1, -1],
-    [1, 0],
-    [-1, 0]
-]
 const StartBtn = (props) => {
     const [run, setRun] = useState(false)
 
@@ -30,17 +21,17 @@ const StartBtn = (props) => {
         if (!runRef.current) {
             return;
         }
-
+        
         props.setGrid(grid => {
             return produce(grid, gridCopy => {
-                for (let i = 0; i < props.numRows; i++) {
-                    for (let j = 0; j < props.numCols; j++) {
+                for (let i = 0; i < numRows; i++) {
+                    for (let j = 0; j < numCols; j++) {
                         let neighbors = 0;
                         operations.forEach(([x, y]) => {
                             const newI = i + x;
                             const newJ = j + y;
 
-                            if (newI >= 0 && newI < props.numRows && newJ >= 0 && newJ < props.numCols) {
+                            if (newI >= 0 && newI < numRows && newJ >= 0 && newJ < numCols) {
                                 neighbors += grid[newI][newJ]
                             }
                         })
@@ -53,6 +44,10 @@ const StartBtn = (props) => {
                     }
                 }
             })
+        })
+
+        props.setGeneration(gen => {
+            return gen + 1
         })
         setTimeout(handleRun, 100);
     }, []);

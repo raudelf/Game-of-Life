@@ -3,27 +3,30 @@ import produce from 'immer';
 
 // Buttons
 import StartBtn from './buttons/startBtn.js';
+import RandomBtn from './buttons/randomBtn.js';
+import { generateEmptyGrid } from './buttons/clearBtn.js';
 
-const numRows = 50;
-const numCols = 50;
 
 const Grid = () => {
-    const [grid, setGrid] = useState(() => {
-        const rows = [];
-
-        for (let i = 0; i < numRows; i++) {
-            rows.push(Array.from(Array(numCols), () => 0))
-        }
-        
-        return rows
+    const [grid, setGrid] = useState(() => {        
+        return generateEmptyGrid()
     })
+
+    const [generation, setGeneration] = useState(0)
 
     return(
         <>  
             <StartBtn 
             setGrid={setGrid}
-            numRows={numRows}
-            numCols={numCols} />
+            setGeneration={setGeneration} />
+            <RandomBtn 
+            setGrid={setGrid} />
+            <button
+            className='btn clearBtn'
+            onClick={() => {
+                setGrid(generateEmptyGrid())
+                setGeneration(0)
+            }}>Clear</button>
             <div className='gridContainer'>
                 {grid.map((rows, i) => 
                     rows.map((col, j) => 
@@ -41,6 +44,7 @@ const Grid = () => {
                         }}/>
                     ))}
             </div>
+            <h3>Generation: {generation}</h3>
         </>
     )
 };
