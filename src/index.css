@@ -30,6 +30,26 @@ code {
   justify-content: center;
 }
 
+.textContainer {
+  width: 1000px;
+  margin: 2% auto;
+  text-align: left;
+}
+
+.btnContainer {
+  width: 100%;
+}
+
 .btn {
-  margin: 5px 0;
+  margin: 2% 1%;
+  height: 2em;
+  border-radius: 5px;
+  border-style: none;
+  background-color: #FEF8FA;
+  color: black;
+}
+
+.btn:hover {
+  cursor: pointer;
+  filter: invert(1);
 }

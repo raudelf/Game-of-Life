@@ -25,41 +25,43 @@ const Grid = (props) => {
     return(
         <div className='contentContainer'>  
             <h3>Current Grid Dimensions: {sizeRef.current.numRows}x{sizeRef.current.numCols}</h3>
-        
-            <StartBtn
-            gridSize={gridSize}
-            setGrid={setGrid}
-            setGeneration={setGeneration} />
 
-            <RandomBtn 
-            setGrid={setGrid}
-            gridSize={gridSize} />
+            <section className='btnContainer'>
+                <StartBtn
+                gridSize={gridSize}
+                setGrid={setGrid}
+                setGeneration={setGeneration} />
 
-            <button
-            className='btn clearBtn'
-            onClick={() => {
-                setGrid(generateEmptyGrid(sizeRef.current.numRows, sizeRef.current.numCols))
-                setGeneration(0)
-            }}>Clear</button>
+                <RandomBtn 
+                setGrid={setGrid}
+                gridSize={gridSize} />
 
-            <p>Grid Size: </p>
-            <button className='btn' onClick={() => {
-                sizeRef.current.numRows = 25
-                sizeRef.current.numCols = 25
-                setGrid(generateEmptyGrid(sizeRef.current.numRows, sizeRef.current.numCols))
-            }}>25x25</button>
+                <button
+                className='btn clearBtn'
+                onClick={() => {
+                    setGrid(generateEmptyGrid(sizeRef.current.numRows, sizeRef.current.numCols))
+                    setGeneration(0)
+                }}>Clear</button>
 
-            <button className='btn' onClick={() => {
-                sizeRef.current.numRows = 50
-                sizeRef.current.numCols = 50
-                setGrid(generateEmptyGrid(sizeRef.current.numRows, sizeRef.current.numCols))
-            }}>50x50</button>
+                <p>Grid Size: </p>
+                <button className='btn' onClick={() => {
+                    sizeRef.current.numRows = 25
+                    sizeRef.current.numCols = 25
+                    setGrid(generateEmptyGrid(sizeRef.current.numRows, sizeRef.current.numCols))
+                }}>25x25</button>
 
-            <button className='btn' onClick={() => {
-                sizeRef.current.numRows = 75
-                sizeRef.current.numCols = 75
-                setGrid(generateEmptyGrid(sizeRef.current.numRows, sizeRef.current.numCols))
-            }}>75x75</button>
+                <button className='btn' onClick={() => {
+                    sizeRef.current.numRows = 50
+                    sizeRef.current.numCols = 50
+                    setGrid(generateEmptyGrid(sizeRef.current.numRows, sizeRef.current.numCols))
+                }}>50x50</button>
+
+                <button className='btn' onClick={() => {
+                    sizeRef.current.numRows = 75
+                    sizeRef.current.numCols = 75
+                    setGrid(generateEmptyGrid(sizeRef.current.numRows, sizeRef.current.numCols))
+                }}>75x75</button>
+            </section>
 
 
             <div style={{
