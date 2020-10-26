@@ -11,15 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-/* ====== GRID ====== */
-.gridContainer {
-  display: grid;
-  grid-template-columns: repeat(50, 20px);
-}
-
-.gridBoxes {
-  width: 20px;
-  height: 20px;
-  border: 1px solid black;
-}
